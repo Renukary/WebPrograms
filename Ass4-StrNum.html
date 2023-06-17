@@ -1,42 +1,50 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sring-Number</title>
+ <title>String and Number Functions</title>
 </head>
 <body>
-    <script type="text/javascript">
-        var str = prompt("Enter the Input", "");
-        if (!(isNaN(str)))  //isNaN means is Not a Number
-        {
-            var num, rev = 0,remainder;
-            num = parseInt(str);
-            while (num != 0)
-            {
-                remainder = num % 10;
-                num = parseInt(num / 10);
-                rev = rev * 10 + remainder;
-            }
-            alert("Reverse of " + str + " is " + rev);
-        } 
-        
-        else
-            
-        {
-            str = str.toUpperCase();
-            for (var i = 0; i < str.length; i++)  //0,1,2,3
-            {
-                var chr = str.charAt(i);
-                if (chr == 'A' || chr == 'E' || chr == 'I' || chr == 'O' || chr == 'U') 
-                	break;
-            }
-            if (i < str.length)
-                alert("The position of the left most vowel is " + (i + 1));
-            else
-                alert("No vowel found in the entered string");
-        }
+ <h1>String and Number Functions</h1>
 
-    </script>
+ <!-- Problem A: Position of Left-Most Vowel -->
+ <h2>Problem A: Position of Left-Most Vowel</h2>
+ <label for="inputString2">Enter a String:</label>
+ <input type="text" id="inputString2">
+ <button onclick="leftMostVowel()">Find</button>
+ <p id="outputA"></p>
+
+ <!-- Problem B: Reverse a Number -->
+ <h2>Problem B: Reverse a Number</h2>
+ <label for="inputNumber">Enter a Number:</label>
+ <input type="number" id="inputNumber">
+ <button onclick="reverseNumber()">Reverse</button>
+ <p id="outputB"></p>
+
+ <script>
+  
+  // Problem A: Position of Left-Most Vowel
+  function leftMostVowel() {
+   var input = document.getElementById("inputString2").value;
+   var vowels = ["a", "e", "i", "o", "u"];
+   for (var i = 0; i < input.length; i++) {
+    if (vowels.includes(input[i])) {
+     document.getElementById("outputA").innerHTML = "The left-most vowel is at position " + (i+1);
+     return;
+    }
+   }
+   document.getElementById("outputA").innerHTML = "No vowels found in the string.";
+  }
+
+  // Problem B: Reverse a Number
+  function reverseNumber() {
+   var input = document.getElementById("inputNumber").value;
+   var output = "";
+   while (input > 0) {
+    output += input % 10;
+    input = Math.floor(input / 10);
+   }
+   document.getElementById("outputB").innerHTML = output;
+  }
+ </script>
 </body>
 </html>
